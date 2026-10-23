@@ -1,0 +1,53 @@
+{
+  "experiment_id": "experiment_001_xlm_roberta",
+  "model_key": "xlm_roberta",
+  "training_config": {
+    "model_key": "xlm_roberta",
+    "checkpoint": "xlm-roberta-base",
+    "classes": [
+      "NAG",
+      "CAG",
+      "OAG"
+    ],
+    "label2id": {
+      "NAG": 0,
+      "CAG": 1,
+      "OAG": 2
+    },
+    "seed": 42,
+    "epochs": 4,
+    "batch_size": 4,
+    "gradient_accumulation_steps": 4,
+    "effective_batch_size": 16,
+    "max_length": 128,
+    "learning_rate": 2e-05,
+    "weight_decay": 0.01,
+    "warmup_ratio": 0.06,
+    "max_grad_norm": 1.0,
+    "fp16": true,
+    "gradient_checkpointing": false,
+    "class_weighting": false,
+    "early_stopping_patience": 2,
+    "dataset_train_path": "data/splits\\train.csv",
+    "dataset_val_path": "data/splits\\validation.csv",
+    "dataset_test_path": "data/splits\\test.csv",
+    "dataset_train_size": 11577,
+    "dataset_val_size": 1447,
+    "dataset_test_size": 1448,
+    "device": "cuda",
+    "gpu_name": "NVIDIA GeForce RTX 3050 Laptop GPU",
+    "gpu_vram_mb": 4095,
+    "training_seconds": 3616.17627120018,
+    "trained_at_utc": "2026-09-22T07:25:07.494622+00:00"
+  },
+  "validation_metrics_summary": {
+    "accuracy": 0.6199032480995162,
+    "f1_weighted": 0.619528417936943,
+    "f1_macro": 0.6113713080963273
+  },
+  "test_metrics_summary": {
+    "accuracy": 0.6457182320441989,
+    "f1_weighted": 0.6461891723773926,
+    "f1_macro": 0.6396191570736639
+  }
+}

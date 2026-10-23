@@ -1,0 +1,56 @@
+group_id,perturbation_type,text,predicted_label,confidence,base_label,base_confidence,label_matches_base,confidence_delta
+G1,base,bahut bakwas hai,NAG,0.3620545661803932,NAG,0.3620545661803932,True,0.0
+G1,repeated_chars,bahut bakwaaaas hai,NAG,0.4393913578759511,NAG,0.3620545661803932,True,0.0773
+G1,capitalization,BAHUT BAKWAS HAI,NAG,0.3620545661803932,NAG,0.3620545661803932,True,0.0
+G1,punctuation,bahut bakwas hai!!!,CAG,0.3937032215548741,NAG,0.3620545661803932,False,0.0316
+G1,emoji,bahut bakwas hai 😡,CAG,0.45423472173174856,NAG,0.3620545661803932,False,0.0922
+G1,url,bahut bakwas hai https://example.com/post/123,NAG,0.3620545661803932,NAG,0.3620545661803932,True,0.0
+G1,mention,@someuser bahut bakwas hai,NAG,0.3620545661803932,NAG,0.3620545661803932,True,0.0
+G1,hashtag,bahut bakwas hai #rant,CAG,0.40860373205031,NAG,0.3620545661803932,False,0.0465
+G1,spelling_variation,bhut bakwaas h,OAG,0.47613660689245046,NAG,0.3620545661803932,False,0.1141
+G1,english_hindi_switch,this is bahut bakwas yaar,OAG,0.3774671613431323,NAG,0.3620545661803932,False,0.0154
+G1,misspelling,bahut bakwass hai,NAG,0.4121818615041144,NAG,0.3620545661803932,True,0.0501
+G2,base,tu pagal hai kya,OAG,0.6933412754075435,OAG,0.6933412754075435,True,0.0
+G2,repeated_chars,tu pagaaal hai kya,OAG,0.7594408458714837,OAG,0.6933412754075435,True,0.0661
+G2,capitalization,TU PAGAL HAI KYA,OAG,0.6933412754075435,OAG,0.6933412754075435,True,0.0
+G2,punctuation,tu pagal hai kya???,OAG,0.5651356254477528,OAG,0.6933412754075435,True,-0.1282
+G2,emoji,tu pagal hai kya 🤪,OAG,0.4981603449919173,OAG,0.6933412754075435,True,-0.1952
+G2,url,tu pagal hai kya https://example.com/x,OAG,0.6933412754075435,OAG,0.6933412754075435,True,0.0
+G2,mention,@someuser tu pagal hai kya,OAG,0.6933412754075435,OAG,0.6933412754075435,True,0.0
+G2,hashtag,tu pagal hai kya #lol,OAG,0.6228351265950108,OAG,0.6933412754075435,True,-0.0705
+G2,spelling_variation,tu pagl h kya,OAG,0.8208350286539802,OAG,0.6933412754075435,True,0.1275
+G2,english_hindi_switch,are you pagal or what,CAG,0.42316082365930086,OAG,0.6933412754075435,False,-0.2702
+G2,misspelling,tu pagal hia kya,OAG,0.567429450124696,OAG,0.6933412754075435,True,-0.1259
+G3,base,ye log kuch nahi samajhte,CAG,0.5568225116351724,CAG,0.5568225116351724,True,0.0
+G3,repeated_chars,ye loooog kuch nahi samajhte,CAG,0.5206261398381802,CAG,0.5568225116351724,True,-0.0362
+G3,capitalization,YE LOG KUCH NAHI SAMAJHTE,CAG,0.5568225116351724,CAG,0.5568225116351724,True,0.0
+G3,punctuation,ye log kuch nahi samajhte...,CAG,0.6149469636826388,CAG,0.5568225116351724,True,0.0581
+G3,emoji,ye log kuch nahi samajhte 🙄,CAG,0.44958766804871914,CAG,0.5568225116351724,True,-0.1072
+G3,url,ye log kuch nahi samajhte https://example.com/y,CAG,0.5568225116351724,CAG,0.5568225116351724,True,0.0
+G3,mention,@someuser ye log kuch nahi samajhte,CAG,0.5568225116351724,CAG,0.5568225116351724,True,0.0
+G3,hashtag,ye log kuch nahi samajhte #frustrating,CAG,0.45284336597173397,CAG,0.5568225116351724,True,-0.104
+G3,spelling_variation,ye log kuch nai samjhte,NAG,0.4494383878377961,CAG,0.5568225116351724,False,-0.1074
+G3,english_hindi_switch,these log just dont understand anything,NAG,0.40043801688699077,CAG,0.5568225116351724,False,-0.1564
+G3,misspelling,ye log kuch nahi samjhte,CAG,0.4891222944873189,CAG,0.5568225116351724,True,-0.0677
+G4,base,mujhe tumse koi dikkat nahi hai,NAG,0.5664254764029238,NAG,0.5664254764029238,True,0.0
+G4,repeated_chars,mujhe tumse koi dikkkat nahi hai,CAG,0.5770529870905466,NAG,0.5664254764029238,False,0.0106
+G4,capitalization,MUJHE TUMSE KOI DIKKAT NAHI HAI,NAG,0.5664254764029238,NAG,0.5664254764029238,True,0.0
+G4,punctuation,mujhe tumse koi dikkat nahi hai.,NAG,0.6934195049506637,NAG,0.5664254764029238,True,0.127
+G4,emoji,mujhe tumse koi dikkat nahi hai 🙂,NAG,0.7716986208077944,NAG,0.5664254764029238,True,0.2053
+G4,url,mujhe tumse koi dikkat nahi hai https://example.com/z,NAG,0.5664254764029238,NAG,0.5664254764029238,True,0.0
+G4,mention,@someuser mujhe tumse koi dikkat nahi hai,NAG,0.5664254764029238,NAG,0.5664254764029238,True,0.0
+G4,hashtag,mujhe tumse koi dikkat nahi hai #allgood,NAG,0.5541618674882585,NAG,0.5664254764029238,True,-0.0123
+G4,spelling_variation,mujhe tumse koi dikkt nahi h,CAG,0.4558824500046141,NAG,0.5664254764029238,False,-0.1105
+G4,english_hindi_switch,i have no dikkat with you at all,NAG,0.8406108319286274,NAG,0.5664254764029238,True,0.2742
+G4,misspelling,mujhe tumse koi dikkat nhi hai,NAG,0.5625380678573747,NAG,0.5664254764029238,True,-0.0039
+G5,base,chup kar bewakoof,OAG,0.8274182608484045,OAG,0.8274182608484045,True,0.0
+G5,repeated_chars,chuuup kar bewakoof,OAG,0.6645190534270575,OAG,0.8274182608484045,True,-0.1629
+G5,capitalization,CHUP KAR BEWAKOOF,OAG,0.8274182608484045,OAG,0.8274182608484045,True,0.0
+G5,punctuation,chup kar bewakoof!!,OAG,0.795553898278993,OAG,0.8274182608484045,True,-0.0319
+G5,emoji,chup kar bewakoof 😠,OAG,0.7913989444696254,OAG,0.8274182608484045,True,-0.036
+G5,url,chup kar bewakoof https://example.com/w,OAG,0.8274182608484045,OAG,0.8274182608484045,True,0.0
+G5,mention,@someuser chup kar bewakoof,OAG,0.8274182608484045,OAG,0.8274182608484045,True,0.0
+G5,hashtag,chup kar bewakoof #done,OAG,0.7988030121998546,OAG,0.8274182608484045,True,-0.0286
+G5,spelling_variation,chup kr bewkoof,OAG,0.8338829088945378,OAG,0.8274182608484045,True,0.0065
+G5,english_hindi_switch,just shut up you bewakoof,OAG,0.5317985398313015,OAG,0.8274182608484045,True,-0.2956
+G5,misspelling,chup kar bewakof,OAG,0.8117420756225562,OAG,0.8274182608484045,True,-0.0157

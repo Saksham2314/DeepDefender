@@ -1,0 +1,56 @@
+group_id,perturbation_type,text
+G1,base,bahut bakwas hai
+G1,repeated_chars,bahut bakwaaaas hai
+G1,capitalization,BAHUT BAKWAS HAI
+G1,punctuation,bahut bakwas hai!!!
+G1,emoji,bahut bakwas hai 😡
+G1,url,bahut bakwas hai https://example.com/post/123
+G1,mention,@someuser bahut bakwas hai
+G1,hashtag,bahut bakwas hai #rant
+G1,spelling_variation,bhut bakwaas h
+G1,english_hindi_switch,this is bahut bakwas yaar
+G1,misspelling,bahut bakwass hai
+G2,base,tu pagal hai kya
+G2,repeated_chars,tu pagaaal hai kya
+G2,capitalization,TU PAGAL HAI KYA
+G2,punctuation,tu pagal hai kya???
+G2,emoji,tu pagal hai kya 🤪
+G2,url,tu pagal hai kya https://example.com/x
+G2,mention,@someuser tu pagal hai kya
+G2,hashtag,tu pagal hai kya #lol
+G2,spelling_variation,tu pagl h kya
+G2,english_hindi_switch,are you pagal or what
+G2,misspelling,tu pagal hia kya
+G3,base,ye log kuch nahi samajhte
+G3,repeated_chars,ye loooog kuch nahi samajhte
+G3,capitalization,YE LOG KUCH NAHI SAMAJHTE
+G3,punctuation,ye log kuch nahi samajhte...
+G3,emoji,ye log kuch nahi samajhte 🙄
+G3,url,ye log kuch nahi samajhte https://example.com/y
+G3,mention,@someuser ye log kuch nahi samajhte
+G3,hashtag,ye log kuch nahi samajhte #frustrating
+G3,spelling_variation,ye log kuch nai samjhte
+G3,english_hindi_switch,these log just dont understand anything
+G3,misspelling,ye log kuch nahi samjhte
+G4,base,mujhe tumse koi dikkat nahi hai
+G4,repeated_chars,mujhe tumse koi dikkkat nahi hai
+G4,capitalization,MUJHE TUMSE KOI DIKKAT NAHI HAI
+G4,punctuation,mujhe tumse koi dikkat nahi hai.
+G4,emoji,mujhe tumse koi dikkat nahi hai 🙂
+G4,url,mujhe tumse koi dikkat nahi hai https://example.com/z
+G4,mention,@someuser mujhe tumse koi dikkat nahi hai
+G4,hashtag,mujhe tumse koi dikkat nahi hai #allgood
+G4,spelling_variation,mujhe tumse koi dikkt nahi h
+G4,english_hindi_switch,i have no dikkat with you at all
+G4,misspelling,mujhe tumse koi dikkat nhi hai
+G5,base,chup kar bewakoof
+G5,repeated_chars,chuuup kar bewakoof
+G5,capitalization,CHUP KAR BEWAKOOF
+G5,punctuation,chup kar bewakoof!!
+G5,emoji,chup kar bewakoof 😠
+G5,url,chup kar bewakoof https://example.com/w
+G5,mention,@someuser chup kar bewakoof
+G5,hashtag,chup kar bewakoof #done
+G5,spelling_variation,chup kr bewkoof
+G5,english_hindi_switch,just shut up you bewakoof
+G5,misspelling,chup kar bewakof

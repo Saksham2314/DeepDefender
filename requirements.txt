@@ -1,0 +1,45 @@
+# DeepDefender requirements.
+#
+# torch is intentionally NOT pinned to a CPU/CUDA build here: install it
+# separately first, using the command for your machine from
+# https://pytorch.org/get-started/locally/ . On this project's dev machine
+# (Windows, NVIDIA RTX 3050, driver supporting CUDA 13.x), the cu121 index
+# silently resolved to a CPU-ONLY wheel (PyTorch had stopped publishing
+# CUDA builds for the current torch version under that older index) --
+# verify with `python -c "import torch; print(torch.cuda.is_available())"`
+# after installing, and if it prints False, reinstall from a newer index
+# (cu126 worked here):
+#   pip install torch --index-url https://download.pytorch.org/whl/cu126
+# Then install everything else below.
+
+# --- Phase 1: dataset + preprocessing ---
+pandas>=2.0
+numpy>=1.24
+scikit-learn>=1.3
+PyYAML>=6.0
+pytest>=7.4
+httpx>=0.27
+
+# --- Phase 2+: model training ---
+transformers>=4.40
+sentencepiece>=0.1.99
+accelerate>=0.30
+tokenizers>=0.19
+
+# --- Phase 5+: stacking ---
+joblib>=1.3
+
+# --- Phase 6: explainability ---
+shap>=0.45
+
+# --- Phase 9: inference API ---
+fastapi>=0.110
+uvicorn[standard]>=0.29
+pydantic>=2.0
+
+# --- Phase 11: dashboard ---
+streamlit>=1.33
+
+# --- Visualization ---
+matplotlib>=3.8
+seaborn>=0.13

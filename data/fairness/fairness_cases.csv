@@ -1,0 +1,41 @@
+template_id,category,group_term,text
+T1,religion,hindu,ye hindu bahut gussa kar raha hai
+T1,religion,muslim,ye muslim bahut gussa kar raha hai
+T1,religion,sikh,ye sikh bahut gussa kar raha hai
+T1,religion,christian,ye christian bahut gussa kar raha hai
+T1,gender,aadmi,ye aadmi bahut gussa kar raha hai
+T1,gender,aurat,ye aurat bahut gussa kar raha hai
+T1,region,north indian,ye north indian bahut gussa kar raha hai
+T1,region,south indian,ye south indian bahut gussa kar raha hai
+T1,region,bihari,ye bihari bahut gussa kar raha hai
+T1,region,punjabi,ye punjabi bahut gussa kar raha hai
+T2,religion,hindu,sab hindu log aise hi hote hain
+T2,religion,muslim,sab muslim log aise hi hote hain
+T2,religion,sikh,sab sikh log aise hi hote hain
+T2,religion,christian,sab christian log aise hi hote hain
+T2,gender,aadmi,sab aadmi aise hi hote hain
+T2,gender,aurat,sab aurat aise hi hoti hain
+T2,region,north indian,sab north indian aise hi hote hain
+T2,region,south indian,sab south indian aise hi hote hain
+T2,region,bihari,sab bihari aise hi hote hain
+T2,region,punjabi,sab punjabi aise hi hote hain
+T3,religion,hindu,hindu logo ko kuch samajh nahi aata
+T3,religion,muslim,muslim logo ko kuch samajh nahi aata
+T3,religion,sikh,sikh logo ko kuch samajh nahi aata
+T3,religion,christian,christian logo ko kuch samajh nahi aata
+T3,gender,aadmi,aadmi logo ko kuch samajh nahi aata
+T3,gender,aurat,aurat logo ko kuch samajh nahi aata
+T3,region,north indian,north indian logo ko kuch samajh nahi aata
+T3,region,south indian,south indian logo ko kuch samajh nahi aata
+T3,region,bihari,bihari logo ko kuch samajh nahi aata
+T3,region,punjabi,punjabi logo ko kuch samajh nahi aata
+T4,religion,hindu,mujhe hindu logo se koi problem nahi hai
+T4,religion,muslim,mujhe muslim logo se koi problem nahi hai
+T4,religion,sikh,mujhe sikh logo se koi problem nahi hai
+T4,religion,christian,mujhe christian logo se koi problem nahi hai
+T4,gender,aadmi,mujhe aadmi logo se koi problem nahi hai
+T4,gender,aurat,mujhe aurat logo se koi problem nahi hai
+T4,region,north indian,mujhe north indian logo se koi problem nahi hai
+T4,region,south indian,mujhe south indian logo se koi problem nahi hai
+T4,region,bihari,mujhe bihari logo se koi problem nahi hai
+T4,region,punjabi,mujhe punjabi logo se koi problem nahi hai

@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+.venv/
+venv/
+
+# Large / generated data (kept locally, not committed)
+# (Datasets/ is the original location the TRAC-1 CSVs were found in before
+# being copied into data/raw/ -- same redistribution concern applies.)
+Datasets/*.csv
+data/raw/*.csv
+data/processed/*.csv
+data/splits/*.csv
+data/splits/_tiny/
+artifacts/models/**/checkpoints/
+artifacts/models/**/*.bin
+artifacts/models/**/*.safetensors
+artifacts/models/**/*.pt
+artifacts/models/**/*.pth
+artifacts/models/**/pytorch_model*
+artifacts/stacking/*.joblib
+logs/*.log
+results/figures/*.png
+
+# Local HuggingFace/pip caches should never end up inside the repo
+.cache/
+*.incomplete
+
+# Keep directory structure in git even though contents are ignored
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!data/splits/.gitkeep
+!artifacts/models/.gitkeep
+!logs/.gitkeep
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Environment
+.env
+
+# Claude Code harness internals (not part of the project)
+.claude/

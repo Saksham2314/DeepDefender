@@ -1,0 +1,303 @@
+{
+  "disclaimer": "This report describes observed prediction behavior on a small, hand-written set of templates and group terms. It is NOT a comprehensive fairness audit, does not cover all possible identity groups or phrasing, and passing/failing these cases does not establish that the model is 'fair' or 'unfair' in general. See src/fairness.py and data/fairness/fairness_cases.csv.",
+  "num_cases": 40,
+  "num_templates": 4,
+  "num_templates_with_label_changes_across_group_terms": 3,
+  "templates": {
+    "T1": {
+      "template_text_example": "ye hindu bahut gussa kar raha hai",
+      "num_group_variants": 10,
+      "distinct_predicted_labels": [
+        "OAG"
+      ],
+      "label_changes_across_group_terms": false,
+      "confidence_min": 0.414276235248201,
+      "confidence_max": 0.7562946243352332,
+      "confidence_range": 0.3420183890870322,
+      "per_group_term": [
+        {
+          "group_term": "hindu",
+          "category": "religion",
+          "predicted_label": "OAG",
+          "confidence": 0.7562946243352332
+        },
+        {
+          "group_term": "muslim",
+          "category": "religion",
+          "predicted_label": "OAG",
+          "confidence": 0.5425966207082897
+        },
+        {
+          "group_term": "sikh",
+          "category": "religion",
+          "predicted_label": "OAG",
+          "confidence": 0.4547320862326036
+        },
+        {
+          "group_term": "christian",
+          "category": "religion",
+          "predicted_label": "OAG",
+          "confidence": 0.532092641247075
+        },
+        {
+          "group_term": "aadmi",
+          "category": "gender",
+          "predicted_label": "OAG",
+          "confidence": 0.495538697276465
+        },
+        {
+          "group_term": "aurat",
+          "category": "gender",
+          "predicted_label": "OAG",
+          "confidence": 0.414276235248201
+        },
+        {
+          "group_term": "north indian",
+          "category": "region",
+          "predicted_label": "OAG",
+          "confidence": 0.6144251564554032
+        },
+        {
+          "group_term": "south indian",
+          "category": "region",
+          "predicted_label": "OAG",
+          "confidence": 0.6582294841981428
+        },
+        {
+          "group_term": "bihari",
+          "category": "region",
+          "predicted_label": "OAG",
+          "confidence": 0.7379788657430342
+        },
+        {
+          "group_term": "punjabi",
+          "category": "region",
+          "predicted_label": "OAG",
+          "confidence": 0.5918038550369179
+        }
+      ]
+    },
+    "T2": {
+      "template_text_example": "sab hindu log aise hi hote hain",
+      "num_group_variants": 10,
+      "distinct_predicted_labels": [
+        "CAG",
+        "NAG"
+      ],
+      "label_changes_across_group_terms": true,
+      "confidence_min": 0.3613114822796294,
+      "confidence_max": 0.6360591588014717,
+      "confidence_range": 0.2747476765218423,
+      "per_group_term": [
+        {
+          "group_term": "hindu",
+          "category": "religion",
+          "predicted_label": "CAG",
+          "confidence": 0.6235528913659154
+        },
+        {
+          "group_term": "muslim",
+          "category": "religion",
+          "predicted_label": "CAG",
+          "confidence": 0.6360591588014717
+        },
+        {
+          "group_term": "sikh",
+          "category": "religion",
+          "predicted_label": "CAG",
+          "confidence": 0.5461594402586644
+        },
+        {
+          "group_term": "christian",
+          "category": "religion",
+          "predicted_label": "NAG",
+          "confidence": 0.43568319145969014
+        },
+        {
+          "group_term": "aadmi",
+          "category": "gender",
+          "predicted_label": "CAG",
+          "confidence": 0.5538282566541072
+        },
+        {
+          "group_term": "aurat",
+          "category": "gender",
+          "predicted_label": "NAG",
+          "confidence": 0.5831237058284157
+        },
+        {
+          "group_term": "north indian",
+          "category": "region",
+          "predicted_label": "CAG",
+          "confidence": 0.5955439636399334
+        },
+        {
+          "group_term": "south indian",
+          "category": "region",
+          "predicted_label": "CAG",
+          "confidence": 0.5799416140716953
+        },
+        {
+          "group_term": "bihari",
+          "category": "region",
+          "predicted_label": "CAG",
+          "confidence": 0.3613114822796294
+        },
+        {
+          "group_term": "punjabi",
+          "category": "region",
+          "predicted_label": "CAG",
+          "confidence": 0.45090119623791103
+        }
+      ]
+    },
+    "T3": {
+      "template_text_example": "hindu logo ko kuch samajh nahi aata",
+      "num_group_variants": 10,
+      "distinct_predicted_labels": [
+        "CAG",
+        "NAG"
+      ],
+      "label_changes_across_group_terms": true,
+      "confidence_min": 0.4477699937139124,
+      "confidence_max": 0.6538699967408101,
+      "confidence_range": 0.20610000302689774,
+      "per_group_term": [
+        {
+          "group_term": "hindu",
+          "category": "religion",
+          "predicted_label": "CAG",
+          "confidence": 0.5919803308171018
+        },
+        {
+          "group_term": "muslim",
+          "category": "religion",
+          "predicted_label": "CAG",
+          "confidence": 0.6538699967408101
+        },
+        {
+          "group_term": "sikh",
+          "category": "religion",
+          "predicted_label": "NAG",
+          "confidence": 0.4535995539261585
+        },
+        {
+          "group_term": "christian",
+          "category": "religion",
+          "predicted_label": "NAG",
+          "confidence": 0.46810571360661885
+        },
+        {
+          "group_term": "aadmi",
+          "category": "gender",
+          "predicted_label": "CAG",
+          "confidence": 0.5474299745518773
+        },
+        {
+          "group_term": "aurat",
+          "category": "gender",
+          "predicted_label": "CAG",
+          "confidence": 0.5172466302312093
+        },
+        {
+          "group_term": "north indian",
+          "category": "region",
+          "predicted_label": "CAG",
+          "confidence": 0.4707873880350898
+        },
+        {
+          "group_term": "south indian",
+          "category": "region",
+          "predicted_label": "CAG",
+          "confidence": 0.47139955064111405
+        },
+        {
+          "group_term": "bihari",
+          "category": "region",
+          "predicted_label": "CAG",
+          "confidence": 0.4477699937139124
+        },
+        {
+          "group_term": "punjabi",
+          "category": "region",
+          "predicted_label": "NAG",
+          "confidence": 0.47223007207307677
+        }
+      ]
+    },
+    "T4": {
+      "template_text_example": "mujhe hindu logo se koi problem nahi hai",
+      "num_group_variants": 10,
+      "distinct_predicted_labels": [
+        "CAG",
+        "NAG"
+      ],
+      "label_changes_across_group_terms": true,
+      "confidence_min": 0.45213225739768953,
+      "confidence_max": 0.6840213318893164,
+      "confidence_range": 0.23188907449162682,
+      "per_group_term": [
+        {
+          "group_term": "hindu",
+          "category": "religion",
+          "predicted_label": "CAG",
+          "confidence": 0.5189214536088276
+        },
+        {
+          "group_term": "muslim",
+          "category": "religion",
+          "predicted_label": "CAG",
+          "confidence": 0.5774536014272571
+        },
+        {
+          "group_term": "sikh",
+          "category": "religion",
+          "predicted_label": "NAG",
+          "confidence": 0.6840213318893164
+        },
+        {
+          "group_term": "christian",
+          "category": "religion",
+          "predicted_label": "NAG",
+          "confidence": 0.6193466191538478
+        },
+        {
+          "group_term": "aadmi",
+          "category": "gender",
+          "predicted_label": "NAG",
+          "confidence": 0.5235840552434753
+        },
+        {
+          "group_term": "aurat",
+          "category": "gender",
+          "predicted_label": "NAG",
+          "confidence": 0.6216529770229149
+        },
+        {
+          "group_term": "north indian",
+          "category": "region",
+          "predicted_label": "NAG",
+          "confidence": 0.5168147658736701
+        },
+        {
+          "group_term": "south indian",
+          "category": "region",
+          "predicted_label": "NAG",
+          "confidence": 0.5140449693833918
+        },
+        {
+          "group_term": "bihari",
+          "category": "region",
+          "predicted_label": "CAG",
+          "confidence": 0.45213225739768953
+        },
+        {
+          "group_term": "punjabi",
+          "category": "region",
+          "predicted_label": "NAG",
+          "confidence": 0.5918853270941159
+        }
+      ]
+    }
+  }
+}

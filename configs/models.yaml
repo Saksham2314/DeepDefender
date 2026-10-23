@@ -1,0 +1,66 @@
+# Transformer checkpoints used by DeepDefender.
+#
+# IMPORTANT: do not hard-code checkpoint names anywhere in src/ — always read
+# them from this file. This lets a checkpoint be swapped (e.g. if one becomes
+# incompatible with the installed `transformers` version) without touching code.
+#
+# Compatibility notes (checked against transformers>=4.40):
+#  - xlm-roberta-base: standard AutoTokenizer/AutoModelForSequenceClassification,
+#    no special requirements beyond `sentencepiece`.
+#  - ai4bharat/IndicBERTv2-MLM-only: BERT-based, standard tokenizer, 278M
+#    params. This project originally targeted the classic `ai4bharat/indic-bert`
+#    (ALBERT-based), but as of this build that repo returns HTTP 401 ("gated
+#    repo") for unauthenticated access, and its only open mirror found
+#    (`kornesh/indic-bert`) ships TensorFlow-only weights (no pytorch_model.bin
+#    / safetensors), which would require adding a TensorFlow dependency just
+#    for one checkpoint. IndicBERTv2-MLM-only is AI4Bharat's own official
+#    successor model, is publicly accessible, and loads cleanly via
+#    AutoTokenizer/AutoModelForSequenceClassification (verified directly:
+#    produces the expected (batch, 3) logits shape when a fresh 3-class head
+#    is attached). This substitution is recorded here, not silently made.
+#  - bert-base-multilingual-cased: standard AutoTokenizer/AutoModel, no
+#    special requirements.
+#  - google/muril-base-cased (optional/experimental, task section 31):
+#    BERT-based, standard AutoTokenizer/AutoModel.
+
+base_models:
+  xlm_roberta:
+    checkpoint: "xlm-roberta-base"
+    display_name: "XLM-RoBERTa"
+    max_length: 128
+
+  indicbert:
+    checkpoint: "ai4bharat/IndicBERTv2-MLM-only"
+    display_name: "IndicBERT (v2)"
+    max_length: 128
+
+  mbert:
+    checkpoint: "bert-base-multilingual-cased"
+    display_name: "mBERT"
+    max_length: 128
+
+experimental_models:
+  muril:
+    checkpoint: "google/muril-base-cased"
+    display_name: "MuRIL"
+    max_length: 128
+
+  hingroberta:
+    # l3cube-pune/hing-roberta: XLM-R continued-pretrained on Hinglish
+    # code-mixed corpora (L3Cube HingBERT family). Deliberately using the
+    # base pretrained checkpoint, NOT any of the pre-fine-tuned
+    # "hing-roberta-finetuned-*-DS" variants available from other authors --
+    # we don't know what data those saw, and using one could risk test-set
+    # contamination against our own TRAC-1 split. We fine-tune this base
+    # checkpoint ourselves, exactly like the other three models, so results
+    # are directly comparable. Standard AutoTokenizer/AutoModel, RoBERTa-based.
+    checkpoint: "l3cube-pune/hing-roberta"
+    display_name: "HingRoBERTa"
+    max_length: 128
+
+# Which base models make up the baseline stack (task section 6/10).
+# The experimental stack (section 31) swaps mbert -> muril and is opt-in
+# via --stack-config experimental on the relevant CLI commands.
+stacks:
+  baseline: ["xlm_roberta", "indicbert", "mbert"]
+  experimental: ["xlm_roberta", "indicbert", "muril"]

@@ -1,0 +1,95 @@
+/* DeepDefender injected UI. Never targets or restyles the page's own text
+   nodes -- only elements this extension itself creates, plus a subtle
+   outline/background tint on flagged elements via a dedicated class. */
+
+.deepdefender-flagged {
+  outline: 1px dashed rgba(220, 38, 38, 0.35) !important;
+  outline-offset: 2px;
+}
+
+.deepdefender-flag-oag {
+  background-color: rgba(220, 38, 38, 0.06) !important;
+}
+
+.deepdefender-flag-cag {
+  background-color: rgba(217, 119, 6, 0.06) !important;
+}
+
+.deepdefender-wrapper {
+  all: initial;
+  display: inline-block;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  position: relative;
+  margin-left: 6px;
+  vertical-align: middle;
+  z-index: 2147483000;
+}
+
+.deepdefender-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  line-height: 1.4;
+  padding: 2px 8px;
+  border-radius: 999px;
+  cursor: pointer;
+  color: #ffffff;
+  background: #d97706;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  white-space: nowrap;
+  user-select: none;
+}
+
+.deepdefender-badge[data-deepdefender-label="OAG"] {
+  background: #dc2626;
+}
+
+.deepdefender-badge:hover {
+  filter: brightness(1.08);
+}
+
+.deepdefender-panel {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  min-width: 220px;
+  max-width: 320px;
+  background: #ffffff;
+  color: #1f2937;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  padding: 10px 12px;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.deepdefender-panel-header {
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.deepdefender-panel-probs {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-bottom: 8px;
+}
+
+.deepdefender-prob-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.deepdefender-panel-explanation {
+  margin-bottom: 6px;
+  color: #374151;
+}
+
+.deepdefender-panel-caveat {
+  font-size: 10.5px;
+  color: #9ca3af;
+  font-style: italic;
+}

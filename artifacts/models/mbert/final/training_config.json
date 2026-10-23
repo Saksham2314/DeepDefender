@@ -1,0 +1,39 @@
+{
+  "model_key": "mbert",
+  "checkpoint": "bert-base-multilingual-cased",
+  "classes": [
+    "NAG",
+    "CAG",
+    "OAG"
+  ],
+  "label2id": {
+    "NAG": 0,
+    "CAG": 1,
+    "OAG": 2
+  },
+  "seed": 42,
+  "epochs": 4,
+  "batch_size": 4,
+  "gradient_accumulation_steps": 4,
+  "effective_batch_size": 16,
+  "max_length": 128,
+  "learning_rate": 2e-05,
+  "weight_decay": 0.01,
+  "warmup_ratio": 0.06,
+  "max_grad_norm": 1.0,
+  "fp16": true,
+  "gradient_checkpointing": false,
+  "class_weighting": false,
+  "early_stopping_patience": 2,
+  "dataset_train_path": "data/splits\\train.csv",
+  "dataset_val_path": "data/splits\\validation.csv",
+  "dataset_test_path": "data/splits\\test.csv",
+  "dataset_train_size": 11577,
+  "dataset_val_size": 1447,
+  "dataset_test_size": 1448,
+  "device": "cuda",
+  "gpu_name": "NVIDIA GeForce RTX 3050 Laptop GPU",
+  "gpu_vram_mb": 4095,
+  "training_seconds": 881.1726472377777,
+  "trained_at_utc": "2026-09-22T08:44:24.398082+00:00"
+}

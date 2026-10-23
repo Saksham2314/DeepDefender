@@ -1,0 +1,96 @@
+# DeepDefender main configuration.
+# Every value here is a default, not a claim of optimality (task requirement:
+# hyperparameters must be configurable, not hard-coded, and never presented
+# as "the" correct values).
+
+project:
+  name: DeepDefender
+  seed: 42
+
+labels:
+  # Order matters: this defines the index<->label mapping used everywhere
+  # (model logits, stacking meta-features, reports).
+  classes: ["NAG", "CAG", "OAG"]
+  names:
+    NAG: "Non-Aggressive"
+    CAG: "Covertly Aggressive"
+    OAG: "Overtly Aggressive"
+
+data:
+  raw_dir: "data/raw"
+  raw_files:
+    - "agr_hi_train.csv"
+    - "agr_hi_dev.csv"
+  # TRAC-1 files have NO header row; columns are positional.
+  columns: ["id", "text", "label"]
+  processed_dir: "data/processed"
+  splits_dir: "data/splits"
+
+  # Reproducible subset used for the first development run (task section 3).
+  dataset_size: 4000
+  random_seed: 42
+
+  # Stratified split ratios (must sum to 1.0).
+  split:
+    train: 0.8
+    validation: 0.1
+    test: 0.1
+
+preprocessing:
+  lowercase: true
+  replace_urls: true
+  url_token: ""              # URLs are removed, not replaced with a token, by default
+  handle_mentions: true      # strip "@user" mentions
+  clean_hashtags: true       # strip leading "#" but keep the hashtag word
+  normalize_whitespace: true
+  strip_punctuation: false   # do NOT aggressively strip punctuation by default
+  strip_emojis: false        # do NOT strip emojis by default
+  collapse_repeated_chars: false  # e.g. "bakwaaaas" -> "bakwaas"; opt-in, not default
+  max_repeated_chars: 2
+
+training:
+  # Conservative defaults for a 4GB-VRAM laptop GPU (RTX 3050). Not tuned.
+  max_length: 128
+  batch_size: 4
+  gradient_accumulation_steps: 4
+  epochs: 4
+  learning_rate: 2.0e-5
+  weight_decay: 0.01
+  warmup_ratio: 0.06
+  max_grad_norm: 1.0
+  fp16: true                     # used only if CUDA + fp16 support detected
+  gradient_checkpointing: false  # opt-in; enable if VRAM is insufficient
+  early_stopping_patience: 2
+  eval_every_epoch: true
+  save_best_only: true
+  class_weighting: false         # opt-in given NAG under-representation (~19%)
+  resume_from_checkpoint: null
+
+smoke_test:
+  num_samples: 40
+  epochs: 1
+  batch_size: 2
+  max_length: 64
+
+stacking:
+  # "out_of_fold" would require k-fold-retraining every base model (5x the
+  # fine-tuning cost per model = 15 extra transformer fine-tunes total),
+  # impractical on a 4GB laptop GPU for the first development run. We use
+  # "held_out_validation" instead: base models are trained once on the train
+  # split, the meta-classifier is trained on their predictions on the
+  # untouched validation split, and the ensemble is evaluated once on the
+  # still-untouched test split. See docs/STACKING.md for the full rationale.
+  method: "held_out_validation"   # "out_of_fold" or "held_out_validation"
+  n_folds: 5
+  meta_classifier:
+    penalty: "l2"
+    C: 1.0
+    max_iter: 1000
+    class_weight: null    # e.g. "balanced"
+    multi_class: "multinomial"
+
+paths:
+  artifacts_dir: "artifacts"
+  results_dir: "results"
+  logs_dir: "logs"
+  fairness_cases: "data/fairness/fairness_cases.csv"
