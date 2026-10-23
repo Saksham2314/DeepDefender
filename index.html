@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>DeepDefender</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #faf9f7;
+    --surface: #ffffff;
+    --border: #e7e3dc;
+    --ink: #1c1a17;
+    --ink-soft: #5b5650;
+    --accent: #9a3324;
+    --accent-soft: #f4e3df;
+    --ok: #2f6b3f;
+    --warn: #8a5a12;
+    --code-bg: #f1efe9;
+    --radius: 12px;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #17140f;
+      --surface: #201c16;
+      --border: #3a342a;
+      --ink: #f2ede4;
+      --ink-soft: #bdb4a6;
+      --accent: #e08468;
+      --accent-soft: #35211b;
+      --ok: #7fcf93;
+      --warn: #e2b15e;
+      --code-bg: #26211a;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #17140f;
+    --surface: #201c16;
+    --border: #3a342a;
+    --ink: #f2ede4;
+    --ink-soft: #bdb4a6;
+    --accent: #e08468;
+    --accent-soft: #35211b;
+    --ok: #7fcf93;
+    --warn: #e2b15e;
+    --code-bg: #26211a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    padding: 0 20px;
+  }
+  img { max-width: 100%; }
+  [hidden] { display: none !important; }
+
+  .wrap { max-width: 820px; margin: 0 auto; padding-block: 56px 80px; }
+
+  header.hero { margin-bottom: 40px; }
+  .eyebrow {
+    display: inline-block;
+    font-size: 12.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+  h1 {
+    font-size: clamp(32px, 6vw, 44px);
+    line-height: 1.08;
+    margin: 0 0 14px 0;
+    letter-spacing: -0.015em;
+  }
+  .lede {
+    font-size: 18px;
+    color: var(--ink-soft);
+    max-width: 62ch;
+    margin: 0 0 26px 0;
+  }
+  .cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14.5px;
+    border: 1px solid var(--border);
+  }
+  .btn.primary { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+  .btn.ghost { color: var(--ink); background: transparent; }
+
+  .callout {
+    margin: 36px 0;
+    padding: 18px 20px;
+    border-radius: var(--radius);
+    background: var(--accent-soft);
+    border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--border));
+  }
+  .callout .label {
+    font-size: 12.5px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .callout p { margin: 0; color: var(--ink); font-size: 15px; }
+  .callout p + p { margin-top: 8px; }
+
+  section { margin: 56px 0; }
+  h2 {
+    font-size: 22px;
+    margin: 0 0 16px 0;
+    letter-spacing: -0.01em;
+  }
+  h3 { font-size: 16.5px; margin: 24px 0 8px 0; }
+  p { margin: 0 0 14px 0; }
+  .muted { color: var(--ink-soft); }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+    margin-top: 18px;
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px;
+  }
+  .card .k { font-size: 12.5px; color: var(--ink-soft); margin-bottom: 6px; }
+  .card .v { font-size: 20px; font-weight: 700; }
+  .card .v small { font-size: 12px; font-weight: 500; color: var(--ink-soft); }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14.5px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  thead th {
+    text-align: left;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    background: var(--code-bg);
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  tbody td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    font-variant-numeric: tabular-nums;
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr.best td { font-weight: 700; }
+  .table-scroll { overflow-x: auto; }
+
+  ul.feature-list { margin: 0; padding-left: 20px; }
+  ul.feature-list li { margin-bottom: 8px; }
+
+  .finding {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--warn);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    padding: 14px 18px;
+    margin-bottom: 14px;
+  }
+  .finding .tag {
+    font-size: 11.5px;
+    font-weight: 700;
+    color: var(--warn);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 6px;
+    display: block;
+  }
+
+  code, .mono {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 13.5px;
+    background: var(--code-bg);
+    padding: 2px 6px;
+    border-radius: 5px;
+  }
+  pre {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    overflow-x: auto;
+    font-size: 13.5px;
+    line-height: 1.55;
+  }
+  pre code { background: none; padding: 0; }
+
+  .arch {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px;
+    font-size: 13px;
+  }
+  .arch-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 0;
+  }
+  .chip {
+    padding: 7px 12px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--code-bg);
+    font-size: 12.5px;
+    white-space: nowrap;
+  }
+  .chip.accent { border-color: var(--accent); color: var(--accent); font-weight: 600; }
+  .arrow { color: var(--ink-soft); font-size: 13px; }
+
+  footer {
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    color: var(--ink-soft);
+    font-size: 13.5px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  footer a { color: inherit; }
+
+  @media (max-width: 520px) {
+    .wrap { padding-block: 36px 56px; }
+    footer { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <span class="eyebrow">Capstone Research Project · Thapar Institute of Engineering &amp; Technology</span>
+    <h1>DeepDefender</h1>
+    <p class="lede">Explainable aggression detection for Hindi-English code-mixed ("Hinglish") text, using a four-model transformer stack and a logistic-regression meta-classifier, with built-in fairness and robustness probing.</p>
+    <div class="cta-row">
+      <a class="btn primary" href="https://github.com/Saksham2314/DeepDefender">View source on GitHub →</a>
+      <a class="btn ghost" href="https://github.com/Saksham2314/DeepDefender#readme">Read the full README</a>
+    </div>
+  </header>
+
+  <div class="callout">
+    <div class="label">This page is informational only</div>
+    <p>There is no publicly hosted prediction service. Detection runs on four fine-tuned Hugging&nbsp;Face transformer models (~3GB of weights) served by a local FastAPI backend — it only works when <strong>you clone the repo and run that backend on your own machine</strong> (GPU recommended, CPU works but is slower). The browser extension talks to <code>http://localhost:8000</code> by default, so it's equally local-only. Nothing here runs or predicts live from this page.</p>
+  </div>
+
+  <section>
+    <h2>What it does</h2>
+    <p>Most aggression/hate-speech detectors are trained on monolingual English. DeepDefender targets the much messier reality of Indian social media: Hindi written in Roman script, mixed mid-sentence with English, full of spelling variation and slang. Given a piece of text, it classifies it into one of three TRAC-1 categories and returns a confidence score and a plain-language explanation of which words drove the decision.</p>
+    <div class="grid">
+      <div class="card"><div class="k">NAG</div><div class="v">Non-Aggressive</div></div>
+      <div class="card"><div class="k">CAG</div><div class="v">Covertly Aggressive</div></div>
+      <div class="card"><div class="k">OAG</div><div class="v">Overtly Aggressive</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Architecture</h2>
+    <div class="arch">
+      <div class="arch-row">
+        <span class="chip">XLM-RoBERTa</span>
+        <span class="chip">IndicBERT v2</span>
+        <span class="chip">mBERT</span>
+        <span class="chip">HingRoBERTa</span>
+      </div>
+      <div class="arch-row"><span class="arrow">↓ independently fine-tuned, each outputs 3 class probabilities ↓</span></div>
+      <div class="arch-row"><span class="chip accent">Logistic Regression meta-classifier (stacking)</span></div>
+      <div class="arch-row"><span class="arrow">↓</span></div>
+      <div class="arch-row"><span class="chip">Label + confidence + occlusion/SHAP explanation</span></div>
+    </div>
+    <p class="muted" style="margin-top:14px; font-size:13.5px;">The baseline ensemble stacks XLM-R + IndicBERT + mBERT per the original project proposal; HingRoBERTa (pretrained specifically on Hinglish code-mixed text) was added afterward as a standalone comparison model, trained and evaluated on the identical data split.</p>
+  </section>
+
+  <section>
+    <h2>Measured results</h2>
+    <p class="muted">Trained on the deduplicated TRAC-1 Hindi-English aggression corpus (~14.5K rows, seed=42, 80/10/10 stratified split). Every number below comes from an actual run of this codebase — see <code>docs/RESULTS_ANALYSIS.md</code> in the repo for the full writeup and a leakage audit.</p>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr><th>Model</th><th>Accuracy</th><th>Weighted F1</th><th>Macro F1</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>XLM-R</td><td>64.57%</td><td>64.62%</td><td>63.96%</td></tr>
+          <tr><td>IndicBERT v2</td><td>64.50%</td><td>64.50%</td><td>64.18%</td></tr>
+          <tr><td>mBERT</td><td>61.26%</td><td>61.27%</td><td>60.35%</td></tr>
+          <tr class="best"><td>Stacking Ensemble</td><td>65.61%</td><td>65.64%</td><td>65.18%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:14px;">The stacking ensemble beat every individual base model on every metric and every per-class F1 score — a measured ~1-point improvement, not assumed going in.</p>
+  </section>
+
+  <section>
+    <h2>What the probes found</h2>
+    <div class="finding">
+      <span class="tag">Fairness probe</span>
+      On a hand-written template test, a non-aggressive control sentence ("I have no problem with {group} people") was classified as <em>covertly aggressive</em> for some identity-group substitutions and <em>non-aggressive</em> for others, with the sentence otherwise identical. A real, measured behavior difference — not evidence of general bias on 40 cases, but worth real scrutiny.
+    </div>
+    <div class="finding">
+      <span class="tag">Robustness probe</span>
+      20% of perturbed sentence variants flipped predicted label versus their base form. The model was least stable under Romanized-Hindi spelling variation and English/Hindi code-switching — the exact phenomena that make Hinglish hard in the first place — and fully stable to misspellings, capitalization, mentions, and URLs.
+    </div>
+  </section>
+
+  <section>
+    <h2>What's in the repo</h2>
+    <ul class="feature-list">
+      <li>Reproducible dataset prep &amp; stratified split (<code>src/dataset.py</code>)</li>
+      <li>Configurable Hinglish preprocessing (<code>src/preprocessing.py</code>)</li>
+      <li>Per-model fine-tuning with VRAM-conscious defaults for a 4GB laptop GPU (<code>src/model_training.py</code>)</li>
+      <li>Held-out-validation stacking, documented against leakage (<code>src/stacking.py</code>, <code>docs/STACKING.md</code>)</li>
+      <li>Occlusion + SHAP explainability (<code>src/explainability.py</code>)</li>
+      <li>Fairness &amp; robustness probe suites (<code>src/fairness.py</code>, <code>src/robustness.py</code>)</li>
+      <li>FastAPI inference server (<code>api/main.py</code>)</li>
+      <li>Chrome MV3 browser extension (<code>extension/</code>)</li>
+      <li>Streamlit research dashboard (<code>dashboard/app.py</code>)</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Run it yourself</h2>
+    <pre><code>git clone https://github.com/Saksham2314/DeepDefender.git
+cd DeepDefender
+pip install torch --index-url https://download.pytorch.org/whl/cu126  # or cpu build
+pip install -r requirements.txt
+
+python -m src.train --check          # verify GPU/environment
+uvicorn api.main:app --reload        # local inference API on :8000</code></pre>
+    <p class="muted">Full setup, dataset placement, and training instructions are in the repo's <a href="https://github.com/Saksham2314/DeepDefender#readme">README</a>.</p>
+  </section>
+
+  <footer>
+    <span>DeepDefender — Thapar Institute of Engineering &amp; Technology, CPG 201</span>
+    <a href="https://github.com/Saksham2314/DeepDefender">github.com/Saksham2314/DeepDefender</a>
+  </footer>
+
+</div>
+</body>
+</html>
